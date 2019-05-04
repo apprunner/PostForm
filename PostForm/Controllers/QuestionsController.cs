@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using PostForm.Models;
 
 namespace PostForm.Controllers
 {
     public class QuestionsController : Controller
     {
+        private PostFormContext db = new PostFormContext();
+
         // GET: Questions
         public ActionResult Index()
         {
@@ -16,7 +19,6 @@ namespace PostForm.Controllers
 
         //HtmlFormQuestion --> HtmlFormQuestion (Form以Html設計)
         [HttpGet]
-        [ValidateAntiForgeryToken]
         public ActionResult HtmlFormQuestion()
         {
             return View();
@@ -25,10 +27,16 @@ namespace PostForm.Controllers
         [HttpPost]
         public ActionResult HtmlFormQuestion(string name, string email, string mobile, string comments)
         {
-            ViewData["Name"] = name;
-            ViewData["Email"] = email;
-            ViewData["Mobile"] = mobile;
-            ViewData["Comments"] = comments;
+            Question q = new Question
+            {
+                Name = name,
+                Email = email,
+                Mobile = mobile,
+                Comments = comments
+            };
+
+            db.Questions.Add(q);
+            db.SaveChanges();
 
             return View("QuestionResult");
         }
@@ -64,6 +72,15 @@ namespace PostForm.Controllers
             ViewData["Comments"] = comments;
 
             return View("QuestionResult");
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                db.Dispose();
+            }
+            base.Dispose(disposing);
         }
     }
 }
