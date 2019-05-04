@@ -16,7 +16,6 @@ namespace PostForm.Controllers
 
         //HtmlFormQuestion --> HtmlFormQuestion (Form以Html設計)
         [HttpGet]
-        [ValidateAntiForgeryToken]
         public ActionResult HtmlFormQuestion()
         {
             return View();
@@ -32,8 +31,6 @@ namespace PostForm.Controllers
 
             return View("QuestionResult");
         }
-
-
 
         //HtmlPages/AskQuestion.html -->HandleQuestion (Form以Html設計)
         [HttpPost]
@@ -56,6 +53,7 @@ namespace PostForm.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult MvcFormQuestion(string name, string email, string mobile, string comments)
         {
             ViewData["Name"] = name;

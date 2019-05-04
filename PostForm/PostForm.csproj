@@ -177,6 +177,7 @@
     <Content Include="Views\ParameterType\RequestForm.cshtml" />
     <Content Include="Views\Shared\_HeaderNavbarDefaultPartial.cshtml" />
     <Content Include="Views\Shared\_HeaderNavbarInversePartial.cshtml" />
+    <Content Include="Views\Questions\MvcFormQuestion.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
