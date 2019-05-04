@@ -17,6 +17,12 @@ namespace PostForm.Controllers
             return View();
         }
 
+        public ActionResult ListAllQuestions()
+        {
+            return View(db.Questions.ToList());
+        }
+
+
         //HtmlFormQuestion --> HtmlFormQuestion (Form以Html設計)
         [HttpGet]
         public ActionResult HtmlFormQuestion()
@@ -27,6 +33,11 @@ namespace PostForm.Controllers
         [HttpPost]
         public ActionResult HtmlFormQuestion(string name, string email, string mobile, string comments)
         {
+            ViewData["Name"] = name;
+            ViewData["Email"] = email;
+            ViewData["Mobile"] = mobile;
+            ViewData["Comments"] = comments;
+
             Question q = new Question
             {
                 Name = name,
