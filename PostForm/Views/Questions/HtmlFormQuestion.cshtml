@@ -1,0 +1,19 @@
+﻿
+@{
+    ViewBag.Title = "Question";
+}
+
+<div class="jumbotron alert-success">
+    <h2>顧客問題詢問</h2>
+</div>
+
+<form action="/Questions/Question" method="post">
+    <label for="name">Name &nbsp;</label><input type="text" id="name" name="name" value="" /><br />
+    <label for="email">Email &nbsp;</label><input type="text" id="email" name="email" value="" /><br />
+    <label for="mobile">Mobile &nbsp;</label><input type="text" id="mobile" name="mobile" value="" /><br />
+    <label for="comments">Comments </label><br />         
+    <textarea rows="5" cols="50" name="comments">請留下您的問題</textarea><br />
+
+    <input type="submit" value="提交問題" />
+</form>
+

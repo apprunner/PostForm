@@ -1,0 +1,17 @@
+﻿@model PostForm.Models.Question
+
+@{
+    ViewBag.Title = "HandleQuestion";
+}
+
+<div class="jumbotron alert-danger">
+    <h2>顧客提交問題資訊</h2>
+</div>
+
+<ul>
+    <li>Name : @Model.Name</li>
+    <li>Email: @Model.Email</li>
+    <li>Mobile : @Model.Mobile</li>
+    <li>Comments : @Model.Comments</li>
+</ul>
+
